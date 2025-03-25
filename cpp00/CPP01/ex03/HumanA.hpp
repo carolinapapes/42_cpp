@@ -1,34 +1,30 @@
 /* ************************************************************************** */
 /*                                                                            */
 /*                                                        :::      ::::::::   */
-/*   Phonebook.hpp                                      :+:      :+:    :+:   */
+/*   HumanA.hpp                                         :+:      :+:    :+:   */
 /*                                                    +:+ +:+         +:+     */
 /*   By: capapes <capapes@student.42.fr>            +#+  +:+       +#+        */
 /*                                                +#+#+#+#+#+   +#+           */
-/*   Created: 2025/02/13 16:49:51 by capapes           #+#    #+#             */
-/*   Updated: 2025/03/25 18:04:55 by capapes          ###   ########.fr       */
+/*   Created: 2025/03/25 19:00:09 by capapes           #+#    #+#             */
+/*   Updated: 2025/03/25 19:00:11 by capapes          ###   ########.fr       */
 /*                                                                            */
 /* ************************************************************************** */
 
-#ifndef PHONEBOOK_HPP
-#define PHONEBOOK_HPP
+#ifndef HUMANA_HPP
+# define HUMANA_HPP
 
-#include <iostream>
-#include "Contact.hpp"
-#include "Utils.hpp"
+# include "Weapon.hpp"
 
-class PhoneBook
+class HumanA
 {
-	private:
-		int				count;
-		int 			last_index;
-		class Contact	arr[8];
-  	public:
-		PhoneBook(void);
-		~PhoneBook(void);
-		void	add(void);
-		void 	search(void);
+  public:
+	HumanA(std::string name, Weapon &weapon);
+	~HumanA();
+	void attack();
 
+  private:
+	std::string name;
+	Weapon &weapon;
 };
 
 #endif

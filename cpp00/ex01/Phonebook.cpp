@@ -6,11 +6,15 @@
 /*   By: capapes <capapes@student.42.fr>            +#+  +:+       +#+        */
 /*                                                +#+#+#+#+#+   +#+           */
 /*   Created: 2025/03/21 15:52:58 by capapes           #+#    #+#             */
-/*   Updated: 2025/03/21 16:22:03 by capapes          ###   ########.fr       */
+/*   Updated: 2025/03/25 18:15:17 by capapes          ###   ########.fr       */
 /*                                                                            */
 /* ************************************************************************** */
 
 #include "Phonebook.hpp"
+#include "Contact.hpp"
+
+#define BOLD "\033[1m"
+#define RESET "\033[0m"
 
 PhoneBook::PhoneBook(void)
 {
@@ -25,12 +29,23 @@ PhoneBook::~PhoneBook(void)
 
 void PhoneBook::add(void)
 {
-	arr[count] = Contact();
+	arr[count].save();
 	count++;
 	if (count == 8)
-	{
 		count = 0;
-	}
+}
+
+int isValidIndex(std::string index, int count)
+{
+	return (
+		!(
+			index.length() > 1
+			|| index[0] < '0'
+			|| index[0] > '7'
+			|| index[0] - '0' >= count
+			|| index.empty()
+		)
+	);
 }
 
 void PhoneBook::search(void)
@@ -42,34 +57,25 @@ void PhoneBook::search(void)
 		std::cout << "Phonebook is empty" << std::endl;
 		return;
 	}
-	while (!std::cin.eof())
+	std::cout << BOLD << 
+			set_length("Index", 10) 
+			<< " | " 
+			<< set_length("First name", 10)
+			<< " | "
+			<< set_length("Last name", 10)
+			<< " | "
+			<< set_length("Nickname", 10)
+			<< RESET << std::endl;
+	for (int i = 0; i < count; i++)
 	{
-		std::cout << "     index | first name| last name | nickname" << std::endl;
-		for (int i = 0; i < count; i++)
-		{
-			std::cout << i << " | ";
-			arr[i].print();
-		}	
-	}
+		std::cout << i << set_length("", 9) << " | ";
+		arr[i].print(" | ");
+	}	
+	std::cout << BOLD << "Enter index of contact to display: " << RESET;
+	std::cin >> index;
+	if (!isValidIndex(index, count))
+		std::cout << "Invalid index" << std::endl;
+	else
+		arr[index[0] - '0'].print("\n");
 }
 
-void print(void)
-{
-	std::cout << this.first_name.substr(0, 10) << " | ";
-	std::cout << this.last_name.substr(0, 10) << " | ";
-	std::cout << this.nickname.substr(0, 10) << std::endl;
-}
-
-std::string	getUserInput(std::string prompt)
-{
-	std::string input;
-	std::cout << "Enter " + prompt + ": " << std::endl;
-	std::cin >> input;
-	while (input.empty())
-	{
-		std::cout << prompt + " must be at least 1 character long" << std::endl;
-		std::cout << "Enter " + prompt;
-		std::cin >> input;
-	}
-	return input;
-}

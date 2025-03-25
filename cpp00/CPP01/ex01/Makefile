@@ -5,17 +5,18 @@
 #                                                     +:+ +:+         +:+      #
 #    By: capapes <capapes@student.42.fr>            +#+  +:+       +#+         #
 #                                                 +#+#+#+#+#+   +#+            #
-#    Created: 2025/02/13 16:48:14 by capapes           #+#    #+#              #
-#    Updated: 2025/03/25 18:08:15 by capapes          ###   ########.fr        #
+#    Created: 2025/03/25 18:30:20 by capapes           #+#    #+#              #
+#    Updated: 2025/03/25 18:31:06 by capapes          ###   ########.fr        #
 #                                                                              #
 # **************************************************************************** #
 
 CPP = c++
 CPPFLAGS = -Wall -Wextra -Werror -std=c++98
 
-SRC = main.cpp Phonebook.cpp Contact.cpp Utils.cpp
+SRC = main.cpp newZombie.cpp randomChump.cpp Zombie.cpp
 OBJ = $(SRC:.cpp=.o)
-TARGET = Phonebook
+
+TARGET = zombie
 
 all: $(TARGET)
 

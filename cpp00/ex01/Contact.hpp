@@ -1,34 +1,33 @@
 /* ************************************************************************** */
 /*                                                                            */
 /*                                                        :::      ::::::::   */
-/*   Phonebook.hpp                                      :+:      :+:    :+:   */
+/*   Contact.hpp                                        :+:      :+:    :+:   */
 /*                                                    +:+ +:+         +:+     */
 /*   By: capapes <capapes@student.42.fr>            +#+  +:+       +#+        */
 /*                                                +#+#+#+#+#+   +#+           */
-/*   Created: 2025/02/13 16:49:51 by capapes           #+#    #+#             */
-/*   Updated: 2025/03/25 18:04:55 by capapes          ###   ########.fr       */
+/*   Created: 2025/03/25 16:37:11 by capapes           #+#    #+#             */
+/*   Updated: 2025/03/25 18:05:11 by capapes          ###   ########.fr       */
 /*                                                                            */
 /* ************************************************************************** */
 
-#ifndef PHONEBOOK_HPP
-#define PHONEBOOK_HPP
-
+#ifndef CONTACT_HPP
+#define CONTACT_HPP
 #include <iostream>
-#include "Contact.hpp"
 #include "Utils.hpp"
 
-class PhoneBook
+
+class Contact
 {
-	private:
-		int				count;
-		int 			last_index;
-		class Contact	arr[8];
   	public:
-		PhoneBook(void);
-		~PhoneBook(void);
-		void	add(void);
-		void 	search(void);
-
+		std::string first_name;
+		std::string last_name;
+		std::string nickname;
+		std::string phone_number;
+		std::string darkest_secret;
+		Contact();
+		~Contact ();
+		void	print() const;
+		void	print(std::string separator) const;
+		void	save();
 };
-
 #endif

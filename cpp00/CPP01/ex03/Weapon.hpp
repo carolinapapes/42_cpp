@@ -1,34 +1,29 @@
 /* ************************************************************************** */
 /*                                                                            */
 /*                                                        :::      ::::::::   */
-/*   Phonebook.hpp                                      :+:      :+:    :+:   */
+/*   Weapon.hpp                                         :+:      :+:    :+:   */
 /*                                                    +:+ +:+         +:+     */
 /*   By: capapes <capapes@student.42.fr>            +#+  +:+       +#+        */
 /*                                                +#+#+#+#+#+   +#+           */
-/*   Created: 2025/02/13 16:49:51 by capapes           #+#    #+#             */
-/*   Updated: 2025/03/25 18:04:55 by capapes          ###   ########.fr       */
+/*   Created: 2025/03/25 18:46:50 by capapes           #+#    #+#             */
+/*   Updated: 2025/03/25 18:59:48 by capapes          ###   ########.fr       */
 /*                                                                            */
 /* ************************************************************************** */
 
-#ifndef PHONEBOOK_HPP
-#define PHONEBOOK_HPP
+#ifndef WEAPON_HPP
+# define WEAPON_HPP
 
 #include <iostream>
-#include "Contact.hpp"
-#include "Utils.hpp"
 
-class PhoneBook
+class Weapon
 {
+	public:
+		Weapon(std::string type);
+		~Weapon();
+		const std::string& getType();
+		void setType(std::string type);
 	private:
-		int				count;
-		int 			last_index;
-		class Contact	arr[8];
-  	public:
-		PhoneBook(void);
-		~PhoneBook(void);
-		void	add(void);
-		void 	search(void);
-
+		std::string type;
 };
 
 #endif
