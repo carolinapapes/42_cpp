@@ -52,6 +52,24 @@
 		"unordered_map": "cpp",
 		"variant": "cpp",
 		"vector": "cpp",
-		"algorithm": "cpp"
+		"algorithm": "cpp",
+		"atomic": "c",
+		"bit": "c",
+		"*.tcc": "c",
+		"compare": "c",
+		"concepts": "c",
+		"exception": "c",
+		"functional": "c",
+		"iterator": "c",
+		"memory_resource": "c",
+		"numeric": "c",
+		"random": "c",
+		"system_error": "c",
+		"type_traits": "c",
+		"utility": "c",
+		"numbers": "c",
+		"ranges": "c",
+		"fstream": "cpp",
+		"iomanip": "cpp"
 	}
 }
