@@ -6,30 +6,25 @@
 /*   By: capapes <capapes@student.42.fr>            +#+  +:+       +#+        */
 /*                                                +#+#+#+#+#+   +#+           */
 /*   Created: 2025/04/16 15:41:26 by capapes           #+#    #+#             */
-/*   Updated: 2025/04/16 17:52:05 by capapes          ###   ########.fr       */
+/*   Updated: 2025/04/21 18:54:44 by capapes          ###   ########.fr       */
 /*                                                                            */
 /* ************************************************************************** */
 
 #include <fstream>
 #include <string>
 #include <iostream>
-
 #include <ErrorHandler.hpp>
+#include "ftReplace.hpp"
 
-
-std::string &replace(std::string filename, std::string s1, std::string s2)
+// Input validation and parsing - START
+typedef struct named_args_s
 {
-	// open file
-	std::ifstream file(filename);
-	if (!file.is_open())
-		handle_error(ErrorCode::FILE_NOT_FOUND, filename);
-	std::string line;
-	for (char ch; file.get(ch);) {
-    	line += ch;
-	}
-}
+	std::string filename;
+	std::string s1;
+	std::string s2;
+} named_args_t;
 
-void is_input_valid(int argc, char* argv[])
+void validateInput(int argc, char* argv[])
 {	
 	if (argc != 4)
 		handle_error(ErrorCode::INVALID_ARGUMENT_COUNT);
@@ -38,15 +33,19 @@ void is_input_valid(int argc, char* argv[])
 			handle_error(ErrorCode::EMPTY_ARGUMENT);
 }
 
+void getArgs(int argc, char* argv[], named_args_t& args)
+{
+	args.filename = argv[1];
+	args.s1 = argv[2];
+	args.s2 = argv[3];
+}
+// Input validation and parsing - END
+
 int main(int argc, char* argv[])
 {
-	is_input_valid(argc, argv);
-	std::string filename = argv[1];
-	std::string s1 = argv[2];
-	std::string s2 = argv[3];
+	named_args_t args;
 
-	
-
-	
-
+	validateInput(argc, argv);	
+	getArgs(argc, argv, args);
+	replaceFile(args.filename, args.s1, args.s2);
 }

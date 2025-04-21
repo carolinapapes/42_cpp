@@ -6,7 +6,7 @@
 /*   By: capapes <capapes@student.42.fr>            +#+  +:+       +#+        */
 /*                                                +#+#+#+#+#+   +#+           */
 /*   Created: 2025/04/16 16:09:08 by capapes           #+#    #+#             */
-/*   Updated: 2025/04/16 17:16:39 by capapes          ###   ########.fr       */
+/*   Updated: 2025/04/21 18:56:42 by capapes          ###   ########.fr       */
 /*                                                                            */
 /* ************************************************************************** */
 
@@ -39,7 +39,6 @@ inline void handle_error(ErrorCode code, const std::string& detail = "") {
     }
     exit(static_cast<int>(code));
 }
-
 
 #endif
 
